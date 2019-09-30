@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Create</h1>
+	<form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.event.label }}<br>
+            {{ form.event(size=32) }}<br>
+			{% for error in form.event.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+        </p>
+		<p>
+            {{ form.event_date.label }}<br>
+            {{ form.event_date(size=32) }}<br>
+			{% for error in form.event_date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+        </p>
+		<p>
+            {{ form.event_timeStart.label }}<br>
+            {{ form.event_timeStart(size=32) }}<br>
+			{% for error in form.event_timeStart.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+        </p>
+		<p>
+            {{ form.event_timeEnd.label }}<br>
+            {{ form.event_timeEnd(size=32) }}<br>
+			{% for error in form.event_timeEnd.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+        </p>
+        <p>{{ form.event_submit() }}</p>
+    </form>
+{% endblock %}:w
