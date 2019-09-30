@@ -3,6 +3,7 @@ from app import app
 from app import db
 from app.form import LoginForm
 from app.form import RegistrationForm
+from app.form import CreateForm
 from app.models import User
 from flask_login import current_user, login_user
 from flask_login import logout_user
@@ -20,8 +21,9 @@ def home():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+
     if current_user.is_authenticated:
-        return redirect(url_for('userpage', username=current_user.username))
+        return redirect(url_for('userpage'))
 
     form = LoginForm()
     if form.validate_on_submit():
@@ -30,20 +32,30 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('userpage', username=current_user.username))
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('userpage')
+
+        return redirect(next_page)
     return render_template('login.html', title='Sign in', form=form)
     
     
-@app.route('/userpage/<username>')
+@app.route('/userpage')
 @login_required
-def userpage(username):
-    user=User.query.filter_by(username=username).first_or_404()
-    return render_template('userpage.html',user=user, title= 'Profile')
+def userpage():
+    return render_template('userpage.html', title= 'HELLLO')
     
-@app.route('/create')
+@app.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
-    return render_template('create.html', title= 'create')
+    form = CreateForm()
+    if form.validate_on_submit():
+        current_user.event = form.event.data
+        current_user.event_date = form.event_date.data
+        current_user.event_timeStart = form.event_timeStart.data
+        current_user.event_timeEnd = form.event_timeEnd.data
+        db.session.commit()
+    return render_template('create.html', title= 'Create', form=form)
 
 @app.route('/groups')
 @login_required
@@ -56,6 +68,7 @@ def register():
     
     if current_user.is_authenticated:
         return redirect(url_for('home'))
+        
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)

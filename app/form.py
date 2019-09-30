@@ -25,3 +25,11 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Please use a different email address.')
+
+
+class CreateForm(FlaskForm):
+    event = StringField('Event', validators=[DataRequired()])
+    event_date = DateField('Date', validators=[DataRequired()])
+    event_timeStart = TimeField('Time Start', validators=[DataRequired()])
+    event_timeEnd = TimeField('Time End', validators=[DataRequired()])
+    event_submit = SubmitField('Finish')
