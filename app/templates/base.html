@@ -14,7 +14,7 @@
             <a href="{{ url_for('login') }}">Login</a>
 			<a href="{{ url_for('register') }}">Make an account</a>
 			{% else %} 
-			<a href="{{ url_for('userpage') }}">Home</a>
+			<a href="{{ url_for('userpage', username=current_user.username)}}">Profile</a>
 			<a href="{{ url_for('create') }}">Schedule</a>
 			<a href="{{ url_for('groups') }}">Group</a>
 			<a href="{{ url_for('logout') }}">Logout</a>
