@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, DateField, TimeField, IntegerField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 
@@ -26,10 +26,14 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError('Please use a different email address.')
 
-
 class CreateForm(FlaskForm):
     event = StringField('Event', validators=[DataRequired()])
     event_date = DateField('Date', validators=[DataRequired()])
     event_timeStart = TimeField('Time Start', validators=[DataRequired()])
     event_timeEnd = TimeField('Time End', validators=[DataRequired()])
     event_submit = SubmitField('Finish')
+
+class CreateGroupForm(FlaskForm):
+    group_name = StringField('Name', validators=[DataRequired()])
+    group_size = IntegerField('Size', validators=[DataRequired()])
+    create = SubmitField('Create')
