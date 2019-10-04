@@ -52,6 +52,9 @@ def create():
         current_user.event_timeStart = form.event_timeStart.data
         current_user.event_timeEnd = form.event_timeEnd.data
         db.session.commit()
+        flash('Your schedule has been saved')
+        return redirect(url_for('create'))
+    
     return render_template('create.html', title='Create', form=form)
 
 @app.route('/groups')

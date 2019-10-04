@@ -2,8 +2,13 @@
 
 {% block content %}
  
-    <h1>Hi {{user.username}}</h1>
+    <h1>Hi {{user.username}} </h1>
+	<br><h2> Your schedules <h2>
+	{% if user.event %} {{user.event}} {% endif %}
+	{% if user.event_date %} {{user.event_date}} {% endif %}
+	{% if user.event_timeStart %} <p>{{user.event_timeStart}} </p>{% endif %}
+	{% if user.event_timeEnd %} <p>{{user.event_timeEnd}} </p>{% endif %}
+	
   
-    <div><p>You have no new schedule </p></div>
     
 {% endblock %}:w

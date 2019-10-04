@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, DateField, TimeField, IntegerField
+from wtforms import StringField,TextAreaField,DateTimeField, PasswordField, BooleanField, SubmitField, DateField, TimeField, IntegerField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 
@@ -28,12 +28,14 @@ class RegistrationForm(FlaskForm):
 
 class CreateForm(FlaskForm):
     event = StringField('Event', validators=[DataRequired()])
-    event_date = DateField('Date', validators=[DataRequired()])
-    event_timeStart = TimeField('Time Start', validators=[DataRequired()])
-    event_timeEnd = TimeField('Time End', validators=[DataRequired()])
+    event_date = DateTimeField('Date', format='%m/%d/%Y', validators=[DataRequired("Format 12/01/2019")])
+    event_timeStart = DateTimeField('Time Start', format='%H:%M:%S')
+    event_timeEnd =DateTimeField('Time End',  format='%H:%M:%S')
     event_submit = SubmitField('Finish')
 
 class CreateGroupForm(FlaskForm):
     group_name = StringField('Name', validators=[DataRequired()])
     group_size = IntegerField('Size', validators=[DataRequired()])
     create = SubmitField('Create')
+
+    
