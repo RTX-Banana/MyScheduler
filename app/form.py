@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField,TextAreaField,DateTimeField, PasswordField, BooleanField, SubmitField, DateField, TimeField, IntegerField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
-from app.models import User
+from app.models import User, Event
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -27,7 +27,7 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('Please use a different email address.')
 
 class CreateForm(FlaskForm):
-    event = StringField('Event', validators=[DataRequired()])
+    event_name = StringField('Event', validators=[DataRequired()])
     event_date = DateTimeField('Date', format='%m/%d/%Y', validators=[DataRequired("Format 12/01/2019")])
     event_timeStart = DateTimeField('Time Start', format='%H:%M:%S')
     event_timeEnd =DateTimeField('Time End',  format='%H:%M:%S')
@@ -37,5 +37,4 @@ class CreateGroupForm(FlaskForm):
     group_name = StringField('Name', validators=[DataRequired()])
     group_size = IntegerField('Size', validators=[DataRequired()])
     create = SubmitField('Create')
-
     

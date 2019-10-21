@@ -5,7 +5,7 @@ from app.form import LoginForm
 from app.form import RegistrationForm
 from app.form import CreateForm
 from app.form import CreateGroupForm
-from app.models import User
+from app.models import User, Event
 from flask_login import current_user, login_user
 from flask_login import logout_user
 from flask_login import login_required
@@ -47,16 +47,18 @@ def userpage(username):
 def create():
     form = CreateForm()
     if form.validate_on_submit():
-        current_user.event = form.event.data
+        current_user.event_name = form.event_name.data
         current_user.event_date = form.event_date.data
         current_user.event_timeStart = form.event_timeStart.data
         current_user.event_timeEnd = form.event_timeEnd.data
+        e = Event(event_name = form.event_name.data, event_date = form.event_date.data, event_timeStart = form.event_timeStart.data, event_timeEnd = form.event_timeEnd.data, user = current_user)
+        db.session.add(e)
         db.session.commit()
         flash('Your schedule has been saved')
         return redirect(url_for('create'))
     
     return render_template('create.html', title='Create', form=form)
-
+    
 @app.route('/groups')
 @login_required
 def groups():
@@ -87,3 +89,5 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for('home'))
+    
+  

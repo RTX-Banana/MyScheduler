@@ -10,10 +10,9 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(128), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    event = db.Column(db.String(128))
-    event_date = db.Column(db.DateTime)
-    event_timeStart=db.Column(db.DateTime)
-    event_timeEnd = db.Column(db.DateTime)
+
+    
+    events = db.relationship('Event', backref='user', lazy = 'dynamic')
    
     def __repr__(self):
         return '<User {}>'.format(self.username) 
@@ -27,3 +26,18 @@ class User(UserMixin,db.Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
+    
+    
+class Event(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    event_name = db.Column(db.String(128))
+    event_date = db.Column(db.DateTime)
+    event_timeEnd = db.Column(db.DateTime)
+    event_timeStart=db.Column(db.DateTime)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
+    
+    def __repr__(self):
+        return '<Events> {}'.format(self.event_name)
+
+    
