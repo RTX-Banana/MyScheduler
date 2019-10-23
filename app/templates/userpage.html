@@ -4,11 +4,12 @@
  
     <h1>Hi {{user.username}} </h1>
 	<br><h2> Your schedules <h2>
-	{% if user.event %} {{user.event}} {% endif %}
-	{% if user.event_date %} {{user.event_date}} {% endif %}
-	{% if user.event_timeStart %} <p>{{user.event_timeStart}} </p>{% endif %}
-	{% if user.event_timeEnd %} <p>{{user.event_timeEnd}} </p>{% endif %}
+	{% for data in e %}
+			 <p> name = {{data.event_name}}, Date = {{data.event_date}},Start time= {{data.event_timeStart}}, End time = {{data.event_timeEnd}} </p>
 	
+	{% endfor %}
+
+		
+		
   
-    
-{% endblock %}:w
+{% endblock %}:w    
