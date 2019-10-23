@@ -14,6 +14,9 @@ from werkzeug.urls import url_parse
 
 
 
+
+
+
 @app.route('/home')
 @app.route('/')
 def home():  
@@ -40,7 +43,9 @@ def login():
 @login_required
 def userpage(username):
     user=User.query.filter_by(username=username).first_or_404()
-    return render_template('userpage.html',user=user, title= 'Profile')
+    e= Event.query.filter_by(user_id=user.id).all()
+    
+    return render_template('userpage.html',user=user, title= 'Profile',e=e)
     
 @app.route('/create', methods=['GET', 'POST'])
 @login_required
