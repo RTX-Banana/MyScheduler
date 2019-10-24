@@ -64,6 +64,23 @@ def create():
     
     return render_template('create.html', title='Create', form=form)
     
+
+@app.route('/delete/<i>')
+@login_required
+def delete(i):
+    Event_to_delete=  Event.query.get_or_404(i)
+    
+    try: 
+        db.session.delete(Event_to_delete)
+        db.session.commit()
+        return redirect(url_for('userpage',username=current_user.username))
+        
+    except:
+        return "there is a problem deleting n"
+    
+        
+    
+    
 @app.route('/groups')
 @login_required
 def groups():

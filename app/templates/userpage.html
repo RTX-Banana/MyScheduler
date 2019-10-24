@@ -5,7 +5,7 @@
     <h1>Hi {{user.username}} </h1>
 	<br><h2> Your schedules <h2>
 	{% for data in e %}
-			 <p> name = {{data.event_name}}, Date = {{data.event_date.date()}}, Start time= {{data.event_timeStart.time()}}, End time = {{data.event_timeEnd.time()}} </p>
+			 <p> name = {{data.event_name}}, Date = {{data.event_date.date()}}, Start time= {{data.event_timeStart.time()}}, End time = {{data.event_timeEnd.time()}} <a href="/delete/{{data.id}}"> Remove </a> </p>
 	
 	{% endfor %}
 
@@ -13,3 +13,4 @@
 		
   
 {% endblock %}:w    
+
