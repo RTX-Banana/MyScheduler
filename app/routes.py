@@ -65,7 +65,7 @@ def create():
     return render_template('create.html', title='Create', form=form)
     
 
-@app.route('/delete/<i>')
+@app.route('/delete/<i>', methods=['GET', 'POST'])
 @login_required
 def delete(i):
     Event_to_delete=  Event.query.get_or_404(i)
@@ -78,7 +78,22 @@ def delete(i):
     except:
         return "there is a problem deleting n"
     
-        
+@app.route('/edit/<e>', methods=['GET', 'POST'])
+@login_required
+def edit(e):
+    Event_to_edit=  Event.query.get_or_404(e)
+    
+    form = CreateForm()
+    if form.validate_on_submit():
+        Event_to_edit.event_name = form.event_name.data
+        Event_to_edit.event_date = form.event_date.data
+        Event_to_edit.event_timeStart = form.event_timeStart.data
+        Event_to_edit.event_timeEnd = form.event_timeEnd.data
+        db.session.commit()
+        flash('Your schedule has been updated')
+        return redirect(url_for('create'))
+    
+    return render_template('edit.html', title='Edit', form=form,  Event_to_edit= Event_to_edit)
     
     
 @app.route('/groups')
