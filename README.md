@@ -1,21 +1,21 @@
 # Myscheduler
 <describe application>
 
-# Login
+## Login
 
-# logout
+## logout
 
-# Register 
+## Register 
 
-# Add event to your schedule 
+## Add event to your schedule 
 
-# Delete event from your schedule
+## Delete event from your schedule
 
-# Edit a event in your schedule
+## Edit a event in your schedule
 
 
-# Create group
+## Create group
 
-# Display group schedule
+## Display group schedule
 
-# CSS
+## CSS
