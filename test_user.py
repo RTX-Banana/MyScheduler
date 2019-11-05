@@ -24,3 +24,21 @@ def test_client():
     yield test_client
     
     app_ctx.pop()
+
+@pytest.fixture(scope='module')
+def init_database():
+    db.create_all()
+    
+    user1 = User(username='TestUser1', email='davin.wong@sjsu.edu')
+    user1.set_password='TestUser123'
+    
+    db.session.add(user1)
+    db.session.commit()
+    
+    yield db
+    
+    db.drop_all()
+    
+def test_home(test_client):
+    response = test_client.get('/')
+    assert response.status_code == 200
