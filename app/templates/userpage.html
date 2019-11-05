@@ -7,18 +7,18 @@
 <p>
 	<table>
         <tr>
-            <th>Event</th>
-            <th>Date</th>
-            <th>Starting Time</th>
-			<th>Ending Time</th>
-			<th>Actions</th>
+            <th> Event </th>
+            <th> Date </th>
+            <th> Starting Time </th>
+			<th> Ending Time </th>
+			<th> Actions </th>
         </tr>
         {% for data in e %}
             <tr>
                 <td>{{ data.event_name }}</td>
                 <td>{{ data.event_date.date() }}</td>
-				<td>{{ data.event_timeStart }}</td>
-				<td>{{ data.event_timeEnd }}</td>
+				<td>{{ data.event_timeStart.time() }}</td>
+				<td>{{ data.event_timeEnd.time() }}</td>
                 <td>
                     <a href="/delete/{{data.id}}">Delete</a>
                     <br>
