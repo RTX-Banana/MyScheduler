@@ -11,5 +11,3 @@ def test_new_user(new_user):
     assert new_user.username == 'InnocentFear'
     assert new_user.email == 'InnocentFearBot@gmail.com'
     assert new_user.password_hash != 'TestUser123'
-    assert not new_user.authenticated
-    assert new_user.role == 'user'
