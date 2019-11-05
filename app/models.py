@@ -40,4 +40,8 @@ class Event(db.Model):
     def __repr__(self):
         return '<Events> {}'.format(self.event_name)
 
-    
+class Group(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    group_name = db.Column(db.String(64))
+    group_size = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
