@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="row d-flex justify-content-center">			
+		<h1>Create</h1>
+	</div>
+	<form action="" method="post">
+        {{ form.hidden_tag() }}
+		<div class="row d-flex justify-content-center">				
+			<p>
+				{{ form.event_name.label }}<br>
+				{{ form.event_name(size=32, class_="form-control", placeholder="Event name") }}
+				{% for error in form.event_name.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+		</div>
+		<div class="row d-flex justify-content-center">			
+			<p>
+				{{ form.event_date.label }}<br>
+				{{ form.event_date(size=32, class_="form-control", placeholder="MM/DD/YYYY") }}
+				{% for error in form.event_date.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+		</div>			
+		<div class="row d-flex justify-content-center">				
+			<p>
+				{{ form.event_timeStart.label }}<br>
+				{{ form.event_timeStart(size=32, class_="form-control", placeholder="HH:MM") }}
+				{% for error in form.event_timeStart.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+		</div>		
+		<div class="row d-flex justify-content-center">				
+			<p>
+				{{ form.event_timeEnd.label }}<br>
+				{{ form.event_timeEnd(size=32, class_="form-control", placeholder="HH:MM") }}
+				{% for error in form.event_timeEnd.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+		</div>
+			
+		<div class="row d-flex justify-content-center">				
+			<p>{{ form.event_submit(class="btn btn-primary") }}</p>
+		</div>
+			
+    </form>
+{% endblock %}:w
