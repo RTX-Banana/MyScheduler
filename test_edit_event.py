@@ -19,7 +19,7 @@ def edit_event(new_event):
     new_event.event_timeStart = '13:30:00'
     new_event.event_timeEnd = '14:45:00'
 
-def test_edit_event(edit_event):
+def test_edit_event(new_event):
     assert edit_event.event_name == 'CMPE 130'
     assert edit_event.event_date == '11/07/2019'
     assert edit_event.event_timeStart == '13:30:00'
