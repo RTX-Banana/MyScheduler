@@ -5,7 +5,7 @@
     <h1>Hi {{user.username}} </h1>
 	<br><h2> Your schedules <h2>
 <p>
-	<table>
+	<table class="table table-striped">
         <tr>
             <th> Event </th>
             <th> Date </th>
@@ -20,15 +20,14 @@
 				<td>{{ data.event_timeStart.time() }}</td>
 				<td>{{ data.event_timeEnd.time() }}</td>
                 <td>
-                    <a href="/delete/{{data.id}}">Delete</a>
+                    <a href="/delete/{{data.id}}"><button class="btn btn-outline-dark"type="submit">Delete</button></a>
                     <br>
-                    <a href="/edit/{{data.id}}">Update</a>
+                    <a href="/edit/{{data.id}}"><button class="btn btn-outline-dark" type="submit">Edit</button></a>
                 </td>
             </tr>
         {% endfor %}
     </table>
 	</p>
-
 
 
 
