@@ -29,10 +29,9 @@ class RegistrationForm(FlaskForm):
 class CreateForm(FlaskForm):
     event_name = StringField('Event', validators=[DataRequired()])
     event_date = DateTimeField('Date', format='%m/%d/%Y', validators=[DataRequired("Format 12/01/2019")])
-    event_timeStart = DateTimeField('Time Start', format='%H:%M:%S')
-    event_timeEnd =DateTimeField('Time End',  format='%H:%M:%S')
+    event_timeStart = DateTimeField('Time Start', format='%H:%M')
+    event_timeEnd =DateTimeField('Time End',  format='%H:%M')
     event_submit = SubmitField('Finish')
-
 class CreateGroupForm(FlaskForm):
     group_name = StringField('Name', validators=[DataRequired()])
     group_size = IntegerField('Size', validators=[DataRequired()])
