@@ -1,0 +1,134 @@
+<<<<<<< HEAD
+<html>
+    <head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% if title %}
+        <title>{{ title }} </title>
+        {% else %}
+        <title> home</title>
+        {% endif %}
+    </head>
+    <body class='.bg-light'>
+        <div>
+			
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<a class="navbar-brand" href="#">MyScheduler</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						{% if current_user.is_anonymous %}
+						<a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
+						<a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+						<a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
+						{% else %}
+						<a class="nav-item nav-link" href="{{ url_for('userpage', username=current_user.username)}}">Profile</a>
+						<a class="nav-item nav-link" href="{{ url_for('create') }}">Schedule</a>
+						<a class="nav-item nav-link" href="{{ url_for('groups') }}">Group</a>	
+						<a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>	
+						{% endif %}
+						
+					</div>
+				</div>
+			</nav>
+
+        </div>
+        <hr>
+		{% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        
+        {% block content %}
+		{% endblock %}
+    </body>
+=======
+<html>
+    <head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% if title %}
+        <title>{{ title }} </title>
+        {% else %}
+        <title> home</title>
+        {% endif %}
+    </head>
+    <body class='.bg-light'>
+        <div>
+            
+<!-- 			{% if current_user.is_anonymous %}
+			<a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
+			<a href="{{ url_for('register') }}">Make an account</a>
+			{% else %} 
+			<a href="{{ url_for('userpage', username=current_user.username)}}">Profile</a>
+			<a href="{{ url_for('create') }}">Schedule</a>
+			<a href="{{ url_for('groups') }}">Group</a>
+			<a href="{{ url_for('logout') }}">Logout</a>
+
+			{% endif %}  -->
+			
+			
+<!-- 			<nav aria-label="breadcrumb">
+				{% if current_user.is_anonymous %}
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item active" aria-current="page"><a href="{{ url_for('home') }}">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><a href="{{ url_for('login') }}">Login</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><a href="{{ url_for('register') }}">Register</a></li>
+				</ol>
+				{% else %} 
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item active" aria-current="page"><a href="{{ url_for('userpage', username=current_user.username)}}">Profile</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><a href="{{ url_for('create') }}">Schedule</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><a href="{{ url_for('groups') }}">Group</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><a href="{{ url_for('logout') }}">Logout</a></li>	
+				</ol>
+				{% endif %}
+			
+
+			</nav> -->
+			
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<a class="navbar-brand" href="#">MyScheduler</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						{% if current_user.is_anonymous %}
+						<a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
+						<a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+						<a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
+						{% else %}
+						<a class="nav-item nav-link" href="{{ url_for('userpage', username=current_user.username)}}">Profile</a>
+						<a class="nav-item nav-link" href="{{ url_for('create') }}">Schedule</a>
+						<a class="nav-item nav-link" href="{{ url_for('groups') }}">Group</a>	
+						<a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>	
+						{% endif %}
+						
+					</div>
+				</div>
+			</nav>
+
+        </div>
+        <hr>
+		{% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        
+        {% block content %}
+		{% endblock %}
+    </body>
+>>>>>>> css
+</html>
