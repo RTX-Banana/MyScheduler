@@ -43,8 +43,7 @@ def login():
 @login_required
 def userpage(username):
     user=User.query.filter_by(username=username).first_or_404()
-    e= Event.query.filter_by(user_id=user.id).all()
-    
+    e= Event.query.order_by('event_date', 'event_timeStart').filter_by(user_id=user.id).all()
     return render_template('userpage.html',user=user, title= 'Profile',e=e)
     
 @app.route('/create', methods=['GET', 'POST'])
