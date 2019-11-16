@@ -22,6 +22,8 @@
                 <td>
                     <a href="/delete/{{data.id}}"><button class="btn btn-outline-dark"type="submit">Delete</button></a>
                     <a href="/edit/{{data.id}}"><button class="btn btn-outline-dark" type="submit">Edit</button></a>
+					<a href="/vacancy/{{user.username}}/{{data.id}}"><button class="btn btn-outline-dark" type="submit">Find Vacancy</button></a>
+
                 </td>
             </tr>
         {% endfor %}
