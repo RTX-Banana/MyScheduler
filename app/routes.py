@@ -63,7 +63,7 @@ def vacancy(username, fi):
         db.session.delete(i)
         db.session.commit()
  
-    e= Event.query.order_by('event_date', 'event_timeStart').filter(Event.user_id == user.id, Event.event_date=='2019-12-02 00:00:00.000000').all()
+    e= Event.query.order_by('event_date', 'event_timeStart').filter(Event.user_id == user.id, Event.event_date==event_to_vacancy.event_date).all()
     eventarray = []
     for i in e:
         eventarray.append(i)
@@ -86,7 +86,7 @@ def vacancy(username, fi):
         db.session.commit()  
 
     
-    k= Event.query.filter(Event.user_id == user.id,Event.event_name== 'vacancy', Event.event_date=='2019-12-02 00:00:00.000000').all()
+    k= Event.query.filter(Event.user_id == user.id,Event.event_name== 'vacancy', Event.event_date==event_to_vacancy.event_date).all()
 
     return render_template('vacancy.html',user=user, title= 'Profile',k=k)
     
