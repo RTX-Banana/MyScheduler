@@ -13,6 +13,10 @@
 	{% set ns = namespace(current_date=e[0].event_date.date()) %}
 	<div class="row d-flex justify-content-center">			
 		<h2>{{ ns.current_date }}</h2>
+		
+		<a href="/vacancy/{{user.username}}/{{e[0].id}}"><button class="btn btn-outline-dark" type="submit">Find Vacancy</button></a>
+	
+
 	</div>
 	<div class="row d-flex justify-content-center">			
 		<table class="table", style="width:90%">
@@ -34,6 +38,11 @@
 					</div>
 					<div class="row d-flex justify-content-center">			
 						<h2>{{ ns.current_date }}</h2>
+						
+						<a href="/vacancy/{{user.username}}/{{data.id}}"><button class="btn btn-outline-dark" type="submit">Find Vacancy</button></a>
+
+
+
 					</div>
 					<div class="row d-flex justify-content-center">			
 
@@ -52,12 +61,11 @@
 				<tr>
 					<td class="text-center">{{ data.event_name }}</td>
 					<td class="text-center">{{ data.event_date.date() }}</td>
-					<td class="text-center">{{ data.event_timeStart }}</td>
-					<td class="text-center">{{ data.event_timeEnd }}</td>
+					<td class="text-center">{{ data.event_timeStart.time() }}</td>
+					<td class="text-center">{{ data.event_timeEnd.time() }}</td>
 					<td class="text-center">
 						<a href="/delete/{{data.id}}"><button class="btn btn-outline-dark"type="submit">Delete</button></a>
 						<a href="/edit/{{data.id}}"><button class="btn btn-outline-dark" type="submit">Edit</button></a>
-						<a href="/vacancy/{{user.username}}/{{data.id}}"><button class="btn btn-outline-dark" type="submit">Find Vacancy</button></a>
 					</td>
 				</tr>
 			{% endfor %}
