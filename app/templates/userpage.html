@@ -2,35 +2,69 @@
 
 {% block content %}
 
-    <h1>Hi {{user.username}} </h1>
-	<br><h2> Your schedules <h2>
+	<div class="row d-flex justify-content-center">			
+		<h1>Hello {{user.username}} </h1>
+	</div>
+	<br>
+	<div class="row d-flex justify-content-center">			
+		<h2> Your schedules <h2>
+	</div>
 <p>
-	<table class="table table-striped">
-        <tr>
-            <th> Event </th>
-            <th> Date </th>
-            <th> Starting Time </th>
-			<th> Ending Time </th>
-			<th> Actions </th>
-        </tr>
-        {% for data in e %}
-            <tr>
-                <td>{{ data.event_name }}</td>
-                <td>{{ data.event_date.date() }}</td>
-				<td>{{ data.event_timeStart.time() }}</td>
-				<td>{{ data.event_timeEnd.time() }}</td>
-                <td>
-                    <a href="/delete/{{data.id}}"><button class="btn btn-outline-dark"type="submit">Delete</button></a>
-                    <a href="/edit/{{data.id}}"><button class="btn btn-outline-dark" type="submit">Edit</button></a>
-					<a href="/vacancy/{{user.username}}/{{data.id}}"><button class="btn btn-outline-dark" type="submit">Find Vacancy</button></a>
+	{% set ns = namespace(current_date=e[0].event_date.date()) %}
+	<div class="row d-flex justify-content-center">			
+		<h2>{{ ns.current_date }}</h2>
+	</div>
+	<div class="row d-flex justify-content-center">			
+		<table class="table", style="width:90%">
+			<thead class="thead-dark">
+				<tr>
+					<th class="text-center">Event</th>
+					<th class="text-center">Date</th>
+					<th class="text-center">Starting Time</th>
+					<th class="text-center">Ending Time</th>
+					<th class="text-center">Actions</th>
+				</tr>
+			</thead>
+			
+		<!-- {% set current_date = e[0].event_date.date() %} -->
+			{% for data in e %}
+				{% if data.event_date.date() != ns.current_date %}
+					{% set ns.current_date = data.event_date.date() %}
+					</table>
+					</div>
+					<div class="row d-flex justify-content-center">			
+						<h2>{{ ns.current_date }}</h2>
+					</div>
+					<div class="row d-flex justify-content-center">			
 
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-	</p>
+						<table class="table", "row d-flex justify-content-center", style="width:90%">
+							<thead class="thead-dark">
+								<tr>	
+									<th class="text-center"> Event </th>
+									<th class="text-center"> Date </th>
+									<th class="text-center"> Starting Time </th>
+									<th class="text-center"> Ending Time </th>
+									<th class="text-center"> Actions </th>
+								</tr>
+							</thead>
+					
+				{% endif %}
+				<tr>
+					<td class="text-center">{{ data.event_name }}</td>
+					<td class="text-center">{{ data.event_date.date() }}</td>
+					<td class="text-center">{{ data.event_timeStart }}</td>
+					<td class="text-center">{{ data.event_timeEnd }}</td>
+					<td class="text-center">
+						<a href="/delete/{{data.id}}"><button class="btn btn-outline-dark"type="submit">Delete</button></a>
+						<a href="/edit/{{data.id}}"><button class="btn btn-outline-dark" type="submit">Edit</button></a>
+						<a href="/vacancy/{{user.username}}/{{data.id}}"><button class="btn btn-outline-dark" type="submit">Find Vacancy</button></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
 
-
+</p>
 
 
 {% endblock %}:
