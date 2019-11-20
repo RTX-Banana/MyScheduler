@@ -2,7 +2,7 @@
 <describe application>
 
 ## Login
- If you do not already have an account, go register an account first. Afterwards, click the "Login" button at the top of the page then enter your username and password. Check the "Remember Me" box if you wish to stay logged in. This feature will successfully log the user in when we run the application.
+If you do not already have an account, go register an account first. Afterwards, click the "Login" button at the top of the page then enter your username and password. Check the "Remember Me" box if you wish to stay logged in. This feature will successfully log the user in when we run the application.
 ## Logout
 After being logged in, if you with to logout, click the "Logout" button at the top of the page in order to logout. This feature works will successfully log the user out when we run the application.
 ## Register 
