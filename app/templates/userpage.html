@@ -10,17 +10,19 @@
 		<h2> Your schedules <h2>
 	</div>
 <p>
-	{% set ns = namespace(current_date=e[0].event_date.date()) %}
-	<div class="row d-flex justify-content-center">			
-		<h2>{{ ns.current_date }}</h2>
-		
-		<a href="/vacancy/{{user.username}}/{{e[0].id}}"><button class="btn btn-outline-dark" type="submit">Find Vacancy</button></a>
-	
+	{% set ns = namespace(current_date=e[0]) %}
 
-	</div>
 	<div class="row d-flex justify-content-center">			
 		<table class="table", style="width:90%">
 			<thead class="thead-dark">
+				<tr>
+					<th class="text-center", colspan="5">{{ns.current_date.event_date.date()}}</th>	
+				</tr>
+				<tr>		
+					<th class="text-center", colspan="5">
+						<a href="/vacancy/{{user.username}}/{{ns.current_date.id}}"><button class="btn btn-outline-light" type="submit">Find Vacancy</button></a>
+					</th>
+				</tr>
 				<tr>
 					<th class="text-center">Event</th>
 					<th class="text-center">Date</th>
@@ -30,24 +32,24 @@
 				</tr>
 			</thead>
 			
-		<!-- {% set current_date = e[0].event_date.date() %} -->
 			{% for data in e %}
-				{% if data.event_date.date() != ns.current_date %}
-					{% set ns.current_date = data.event_date.date() %}
+				{% if data.event_date.date() != ns.current_date.event_date.date() %}
+					{% set ns.current_date = data %}
 					</table>
 					</div>
-					<div class="row d-flex justify-content-center">			
-						<h2>{{ ns.current_date }}</h2>
-						
-						<a href="/vacancy/{{user.username}}/{{data.id}}"><button class="btn btn-outline-dark" type="submit">Find Vacancy</button></a>
 
-
-
-					</div>
 					<div class="row d-flex justify-content-center">			
 
 						<table class="table", "row d-flex justify-content-center", style="width:90%">
 							<thead class="thead-dark">
+								<tr>
+									<th class="text-center", colspan="5">{{ns.current_date.event_date.date()}}</th>	
+								</tr>
+								<tr>		
+									<th class="text-center", colspan="5">
+										<a href="/vacancy/{{user.username}}/{{ns.current_date.id}}"><button class="btn btn-outline-light" type="submit">Find Vacancy</button></a>
+									</th>
+								</tr>
 								<tr>	
 									<th class="text-center"> Event </th>
 									<th class="text-center"> Date </th>
