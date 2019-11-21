@@ -45,10 +45,9 @@ def login():
 @login_required
 def userpage(username):
     user=User.query.filter_by(username=username).first_or_404()
-    e= Event.query.filter(Event.user_id == user.id,  Event.event_name!='vacancy').all()
+    e= Event.query.order_by('event_date', 'event_timeStart').filter(Event.user_id == user.id,  Event.event_name!='vacancy').all()
     
     
-
     return render_template('userpage.html',user=user, title= 'Profile',e=e)
 
 @app.route('/vacancy/<username>/<fi>', methods=['GET', 'POST'])
@@ -68,20 +67,18 @@ def vacancy(username, fi):
     for i in e:
         eventarray.append(i)
     
-    for j in range(len(eventarray)-1):
-       if (j==0 and eventarray[j].event_timeStart != '1900-01-01 00:00:00.000000'):
-        q = Event(event_name = 'vacancy', event_date = eventarray[j].event_date, event_timeStart=datetime(1900,1,1,00,00,00), event_timeEnd = eventarray[j].event_timeStart, user = current_user)
+    if (eventarray[0].event_timeStart != '1900-01-01 00:00:00.000000'):
+        q = Event(event_name = 'vacancy', event_date = eventarray[0].event_date, event_timeStart=datetime(1900,1,1,00,00,00), event_timeEnd = eventarray[0].event_timeStart, user = current_user)
         db.session.add(q)
         db.session.commit() 
-        
+    
+    for j in range(len(eventarray)-1):
        c = Event(event_name = 'vacancy', event_date = eventarray[j].event_date, event_timeStart = eventarray[j].event_timeEnd, event_timeEnd = eventarray[j+1].event_timeStart, user = current_user)
        db.session.add(c)
        db.session.commit()  
-       
-    
       
     if (eventarray[-1].event_timeStart != datetime(1900, 1, 1, 23,59, 00)):
-        l = Event(event_name = 'vacancy', event_date = eventarray[1].event_date, event_timeStart = eventarray[-1].event_timeEnd, event_timeEnd = datetime(1900,1,1,23,59,00), user = current_user)
+        l = Event(event_name = 'vacancy', event_date = eventarray[0].event_date, event_timeStart = eventarray[-1].event_timeEnd, event_timeEnd = datetime(1900,1,1,23,59,00), user = current_user)
         db.session.add(l)
         db.session.commit()  
 
@@ -144,14 +141,18 @@ def edit(e):
     return render_template('edit.html', title='Edit', form=form,  Event_to_edit= Event_to_edit)
     
     
-@app.route('/groups')
+@app.route('/groups', methods=['GET', 'POST'])
 @login_required
 def groups():
     form = CreateGroupForm()
     if form.validate_on_submit():
-        current_user.group_name = form.group_size.data
-        current_user.group_size = form.group_size.data
+        
+        user = User(username = form.group_name.data, email="test@gmail.com")
+        user.set_password("aaaaaaaaaaaaa")
+        
+        db.session.add(user)
         db.session.commit()
+        flash('Group has been created')
     return render_template('groups.html', title='Group Creation', form=form)
    
 @app.route('/register', methods=['GET', 'POST'])
