@@ -14,7 +14,7 @@ def create_app(test_config=None):
     if test_config is None:
         #Load config instance
         app.config.from_object('config.Config')
-    else
+    else:
         app.config.from_mapping(test_config)
     
     db.init_app(app)
