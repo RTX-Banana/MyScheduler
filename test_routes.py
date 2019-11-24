@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 login=LoginManager()
 
-def create_app(test_config=None)
+def create_app(test_config=None):
     #Creating and configuring the app
     app = Flask(__name__, instance_relative_config=False)
     
