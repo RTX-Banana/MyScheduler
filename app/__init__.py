@@ -7,18 +7,18 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 
-app = Flask(__name__)
-app.config.from_object(Config)
+#app = Flask(__name__)
+#app.config.from_object(Config)
 
-db = SQLAlchemy(app)
+#db = SQLAlchemy(app)
 migrate=Migrate (app,db)
 login=LoginManager(app)
 login.login_view='login'
 
-from app import routes, models
+#from app import routes, models
 
-db = SQLAlchemy()
-login=LoginManager()
+#db = SQLAlchemy()
+#login=LoginManager()
 
 def create_app(test_config=None):
     #Creating and configuring the app
