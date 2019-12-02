@@ -12,7 +12,7 @@ After being logged in, if you with to logout, click the "Logout" button at the t
 ## Userpage
 After being logged in, if you are not already on the userpage, hit the "Profile" button at the top of the page to go to the userpage. The userpage should display the user's schedule. The Userpage has been completed and successfully does its assigned task.
 ## Add event to your schedule (Create)
-After being logged in, click the "Schedule" button at the top of the page in order to add your event to your schedule. After entering the event name, event date, event start time, and event end time, the user will click the "Finish" button underneath to add the event. The time should be entered on a 24 hr clock scale. The events will display on the userpage. This feature will successfully create an event for the user and display it on the userpage.
+After being logged in, click the "Schedule Event" button at the top of the page in order to add your event to your schedule. After entering the event name, event date, event start time, and event end time, the user will click the "Finish" button underneath to add the event. The time should be entered on a 24 hr clock scale. The events will display on the userpage. This feature will successfully create an event for the user and display it on the userpage.
 ## Delete event from your schedule (Delete)
 Once an event has been created, you can click the "Delete" button on the right side of the event, which is displayed on the userpage, to delete the event. This feature will successfully delete an event for the user and remove it from the user page.
 ## Edit a event in your schedule (Edit)
