@@ -4,7 +4,6 @@ from app import db
 from app.form import LoginForm
 from app.form import RegistrationForm
 from app.form import CreateForm
-from app.form import CreateGroupForm
 from app.models import User, Event
 from flask_login import current_user, login_user
 from flask_login import logout_user
@@ -139,22 +138,7 @@ def edit(e):
         return redirect(url_for('create'))
     
     return render_template('edit.html', title='Edit', form=form,  Event_to_edit= Event_to_edit)
-    
-    
-@app.route('/groups', methods=['GET', 'POST'])
-@login_required
-def groups():
-    form = CreateGroupForm()
-    if form.validate_on_submit():
-        
-        user = User(username = form.group_name.data, email="test@gmail.com")
-        user.set_password("aaaaaaaaaaaaa")
-        
-        db.session.add(user)
-        db.session.commit()
-        flash('Group has been created')
-    return render_template('groups.html', title='Group Creation', form=form)
-   
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     

@@ -32,8 +32,3 @@ class CreateForm(FlaskForm):
     event_timeStart = DateTimeField('Time Start', format='%H:%M')
     event_timeEnd =DateTimeField('Time End',  format='%H:%M')
     event_submit = SubmitField('Finish')
-class CreateGroupForm(FlaskForm):
-    group_name = StringField('Name', validators=[DataRequired()])
-    group_size = IntegerField('Size', validators=[DataRequired()])
-    create = SubmitField('Create')
-    
