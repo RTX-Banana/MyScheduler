@@ -12,20 +12,20 @@
 <p>
 	{% set ns = namespace(current_date=e[0]) %}
 
+	{% set cs = namespace(counter=0) %}
 	<div class="row d-flex justify-content-center">			
 		<table class="table", style="width:90%">
 			<thead class="thead-dark">
 				<tr>
-					<th class="text-center", colspan="5">{{ns.current_date.event_date.date()}}</th>	
+					<th class="text-center", colspan="4">{{ns.current_date.event_date.date()}}</th>	
 				</tr>
 				<tr>		
-					<th class="text-center", colspan="5">
-						<a href="/vacancy/{{user.username}}/{{ns.current_date.id}}"><button class="btn btn-outline-light" type="submit">Find Vacancy</button></a>
+					<th class="text-center", colspan="4">
+						<a href="/vacancy/{{user.username}}/{{ns.current_date.id}}"><button class="btn btn-secondary" type="submit">Find Vacancy</button></a>
 					</th>
 				</tr>
 				<tr>
 					<th class="text-center">Event</th>
-					<th class="text-center">Date</th>
 					<th class="text-center">Starting Time</th>
 					<th class="text-center">Ending Time</th>
 					<th class="text-center">Actions</th>
@@ -35,7 +35,17 @@
 			{% for data in e %}
 				{% if data.event_date.date() != ns.current_date.event_date.date() %}
 					{% set ns.current_date = data %}
+					<tr>
+						{% if cs.counter==1 %}
+							<th class="text-center", colspan="4">You have {{cs.counter}} event</th>	
+						{% else %}
+							<th class="text-center", colspan="4">You have {{cs.counter}} events</th>	
+						{% endif %}							
+					</tr>
 					</table>
+					
+					{% set cs.counter = 0 %}
+
 					</div>
 
 					<div class="row d-flex justify-content-center">			
@@ -43,16 +53,15 @@
 						<table class="table", "row d-flex justify-content-center", style="width:90%">
 							<thead class="thead-dark">
 								<tr>
-									<th class="text-center", colspan="5">{{ns.current_date.event_date.date()}}</th>	
+									<th class="text-center", colspan="4">{{ns.current_date.event_date.date()}}</th>	
 								</tr>
 								<tr>		
-									<th class="text-center", colspan="5">
-										<a href="/vacancy/{{user.username}}/{{ns.current_date.id}}"><button class="btn btn-outline-light" type="submit">Find Vacancy</button></a>
+									<th class="text-center", colspan="4">
+										<a href="/vacancy/{{user.username}}/{{ns.current_date.id}}"><button class="btn btn-secondary" type="submit">Find Vacancy</button></a>
 									</th>
 								</tr>
 								<tr>	
 									<th class="text-center"> Event </th>
-									<th class="text-center"> Date </th>
 									<th class="text-center"> Starting Time </th>
 									<th class="text-center"> Ending Time </th>
 									<th class="text-center"> Actions </th>
@@ -62,15 +71,22 @@
 				{% endif %}
 				<tr>
 					<td class="text-center">{{ data.event_name }}</td>
-					<td class="text-center">{{ data.event_date.date() }}</td>
 					<td class="text-center">{{ data.event_timeStart.time() }}</td>
 					<td class="text-center">{{ data.event_timeEnd.time() }}</td>
 					<td class="text-center">
-						<a href="/delete/{{data.id}}"><button class="btn btn-outline-dark"type="submit">Delete</button></a>
-						<a href="/edit/{{data.id}}"><button class="btn btn-outline-dark" type="submit">Edit</button></a>
+						<a href="/delete/{{data.id}}"><button class="btn btn-outline-danger"type="submit">Delete</button></a>
+						<a href="/edit/{{data.id}}"><button class="btn btn-outline-primary" type="submit">Edit</button></a>
 					</td>
 				</tr>
+				{% set cs.counter=cs.counter+1 %}
 			{% endfor %}
+		<tr>
+			{% if cs.counter==1 %}
+				<th class="text-center", colspan="4">You have {{cs.counter}} event</th>	
+			{% else %}
+				<th class="text-center", colspan="4">You have {{cs.counter}} events</th>	
+			{% endif %}
+		</tr>
 		</table>
 	</div>
 
