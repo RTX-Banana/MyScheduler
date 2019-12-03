@@ -12,6 +12,7 @@ from flask import request
 from werkzeug.urls import url_parse
 from array import array
 from datetime import datetime
+from datetime import date
 
 
 
@@ -46,7 +47,17 @@ def userpage(username):
     user=User.query.filter_by(username=username).first_or_404()
     e= Event.query.order_by('event_date', 'event_timeStart').filter(Event.user_id == user.id,  Event.event_name!='vacancy').all()
     
+    eventarray = []
+    for i in e:
+        eventarray.append(i)
     
+    currentday = date.today()
+    c = currentday.strftime('%m/%d/%Y')
+
+    for ee in eventarray:
+        if (ee.event_date.strftime('%m/%d/%Y') == c):
+            flash('You have an event today: ' + ee.event_name)
+           
     return render_template('userpage.html',user=user, title= 'Profile',e=e)
 
 @app.route('/vacancy/<username>/<fi>', methods=['GET', 'POST'])
