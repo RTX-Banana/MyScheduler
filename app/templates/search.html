@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="row d-flex justify-content-center">			
+		<h1>Search</h1>
+	</div>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+		<div class="row d-flex justify-content-center">		
+			<p>
+				{{ form.username.label }}<br>
+				{{ form.username(size=32, class_="form-control col-md-32", placeholder="ExampleUser")}}
+			
+			</p>
+		</div
+		
+		<br>
+		
+		<div class="row d-flex justify-content-center">	
+			<p>
+				{{ form.submit(class="btn btn-primary") }}
+			</p>
+		</div>
+    </form>
+{% endblock %}
