@@ -2,28 +2,37 @@
 
 {% block content %}
 
-    <h1>Hi {{user.username}} </h1>
-	<br><h2> Your schedules <h2>
+	<div class="row d-flex justify-content-center">			
+		<h2> Your Vacancies <h2>
+	</div>
 <p>
-	<table class="table table-striped">
-        <tr>
-            <th> Event </th>
-            <th> Date </th>
-            <th> Starting Time </th>
-			<th> Ending Time </th>
-		
-        </tr>
-        {% for data in k %}
-            <tr>
-                <td>{{ data.event_name }}</td>
-                <td>{{ data.event_date.date() }}</td>
-				<td>{{ data.event_timeStart.time() }}</td>
-				<td>{{ data.event_timeEnd.time() }}</td>
+	<div class="row d-flex justify-content-center">			
 
-            </tr>
-        {% endfor %}
-    </table>
-	</p>
+		<table class="table", style="width:90%">
+			<thead class="thead-dark">
+				<tr>		
+					<th class="text-center", colspan="3">
+						{{ k[0].event_date.date() }}
+					</th>
+				</tr>
+				<tr>
+					<th class="text-center"> Event </th>
+					<th class="text-center"> Starting Time </th>
+					<th class="text-center"> Ending Time </th>
+				
+				</tr>
+			</thead>
+			{% for data in k %}
+				<tr>
+					<td class="text-center">{{ data.event_name }}</td>
+					<td class="text-center">{{ data.event_timeStart.time() }}</td>
+					<td class="text-center">{{ data.event_timeEnd.time() }}</td>
+
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+</p>
 
 
 
