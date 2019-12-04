@@ -32,3 +32,7 @@ class CreateForm(FlaskForm):
     event_timeStart = DateTimeField('Time Start', format='%H:%M')
     event_timeEnd =DateTimeField('Time End',  format='%H:%M')
     event_submit = SubmitField('Finish')
+    
+class UserForm(FlaskForm):
+    username = StringField('Username')
+    submit = SubmitField('Search')
