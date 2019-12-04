@@ -52,6 +52,9 @@ def userpage(username):
     for i in e:
         eventarray.append(i)
     
+    if (len(eventarray) == 0):
+        return redirect(url_for('home'))
+    
     currentday = date.today()
     c = currentday.strftime('%m/%d/%Y')
 
