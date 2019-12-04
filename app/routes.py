@@ -4,6 +4,7 @@ from app import db
 from app.form import LoginForm
 from app.form import RegistrationForm
 from app.form import CreateForm
+from app.form import UserForm
 from app.models import User, Event
 from flask_login import current_user, login_user
 from flask_login import logout_user
@@ -165,6 +166,23 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
+@app.route('/search/', methods=['GET', 'POST'])
+@login_required
+def search():
+    form = UserForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first_or_404() 
+        even = Event.query.order_by('event_date', 'event_timeStart').filter(Event.user_id == user.id,  Event.event_name!='vacancy').all()
+        return render_template('otheruserpage.html', title='Other User', user=user, e=even)    
+    return render_template('search.html', title='Search', form=form)
+    
+
+@app.route('/otheruserpage/<user>', methods=['GET', 'POST'])
+def otheruserpage(user):
+    theUser=user
+    e= Event.query.order_by('event_date', 'event_timeStart').filter(Event.user_id == theUser.id,  Event.event_name!='vacancy').all()
+    
+    return render_template('userpage.html',user=user, title= 'Profile',e=e)
 
 @app.route('/logout')
 def logout():
