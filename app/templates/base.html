@@ -23,7 +23,8 @@
 						<a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
 						{% else %}
 						<a class="nav-item nav-link" href="{{ url_for('userpage', username=current_user.username)}}">Profile</a>
-						<a class="nav-item nav-link" href="{{ url_for('create') }}">Schedule Event</a>	
+						<a class="nav-item nav-link" href="{{ url_for('create') }}">Schedule Event</a>
+						<a class="nav-item nav-link" href="{{ url_for('search') }}">Search</a>										
 						<a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>	
 						{% endif %}
 						
