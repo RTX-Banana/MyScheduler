@@ -1,6 +1,8 @@
 # Myscheduler
 <describe application>
 
+## Heroku Link: https://myschedulercmpe131.herokuapp.com/
+
 ## Home Page
 The home page should be the first page the user is directed to. It basically welcomes the user to the myscheduler app and tells them to let us know their schedule. The Home Page has been completed and successfully does its assigned task.
 ## Register 
