@@ -59,8 +59,16 @@ def test_logout(test_client):
     response = test_client.get('/logout', follow_redirects=True)
     assert response.status_code == 200
 
-# Test 6 Testing Register
+# Test 6: Testing Register
 
 def test_register_route(test_client):
     response = test_client.get('/register')
+    
+# Test 7: Testing Changing PW
+
+def test_setting_password(new_user):
+    new_user.set_password('TESTTEST')
+    assert new_user.check_password != 'TESTTEST'
+    assert new_user.check_password('TESTTEST')
+    assert not new_user.check_password('TestUser')
     assert response.status_code == 200
