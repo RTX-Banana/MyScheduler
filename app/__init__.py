@@ -3,9 +3,11 @@ from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_heroku import Heroku
 
 db = SQLAlchemy()
 login = LoginManager()
+heroku = Heroku()
 
 def create_app(test_config=Config):
     app = Flask(__name__)
