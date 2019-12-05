@@ -41,6 +41,11 @@ Vacancy::
     Finds vacancies in your schedule based on existing events
     Takes 'form.event_date.data', 'form.event_timeStart.data', and 'form.event_timeEnd.data'
 
+Search::
+
+    Allows you to view another person's schedule by typing in their username
+    Takes 'User.username'
+
 Tutorials:
 ==========
 
@@ -51,3 +56,4 @@ Tutorials:
 * :ref:`Edit`
 * :ref:`Delete`
 * :ref:`Find a Vacancy`
+* :ref:`Search`
