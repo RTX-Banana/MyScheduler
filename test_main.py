@@ -2,7 +2,7 @@ import pytest
 from app.models import User
 from app.models import Event
 from config import Config
-from app import app
+from app import create_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
@@ -19,7 +19,7 @@ def new_event():
     
 @pytest.fixture(scope='module')
 def test_client():
-    flask_app = app(Config)
+    flask_app = create_app(Config)
     testing_client = flask_app.test_client()
     ctx = flask_app.app_context()
     ctx.push()
