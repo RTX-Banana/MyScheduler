@@ -1,10 +1,39 @@
 [![Build Status](https://travis-ci.com/Innocent-Fear/Cmpe131Team11.svg?branch=master)](https://travis-ci.com/Innocent-Fear/Cmpe131Team11)
-## All 8 unit tests can be seen in test_main.py.
 
 # Myscheduler
-<describe application>
+Many people have trouble scheduling out their day, and they may have trouble finding vacancies in their schedules if they have too many things to do in the day. To help them out with this, we decided to create a web application that would allow people to find the vacancies in their schedule each day. Also, if they happen to be trying to find a time where they can work on a group project or want to find time to hang out with someone, the two users can exchange usernames to view the schedules of others.
 
 ## Heroku Link: https://myschedulercmpe131.herokuapp.com/
+
+## Getting Started
+
+This section is for people who want to try to make their own edits to the code.
+To run the application, first either clone the repo with
+```
+https://github.com/Innocent-Fear/Cmpe131Team11.git
+```
+or download it as a zip.
+
+Afterwards, use the following command to install the required packages
+```
+pip install -U -r requirements.txt
+```
+To run the application, use the command
+```
+python myscheduler.py
+```
+
+## Unit Test
+
+Our 8 unit tests are in a file called test_main.py, which can be seen upon opening the repo.
+To run the test cases, you will first need to install pytest if you do not already have it, so type the following command in your terminal if needed
+```
+pip install pytest
+```
+Afterwards, the following command can be typed into the terminal to run the unit tests.
+```
+pytest
+```
 
 ## Home Page
 The home page should be the first page the user is directed to. It basically welcomes the user to the myscheduler app and tells them to let us know their schedule. The Home Page has been completed and successfully does its assigned task.
