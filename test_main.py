@@ -23,7 +23,7 @@ def test_new_user(new_user):
     assert new_user.password_hash != 'TestUser123'
     
  # Test 2: Testing Authentication of a New User
- def test_user_authentication(new_user):
+def test_user_authentication(new_user):
     assert new_user.is_authenticated == True
     
 # Test 3: Testing Creation of a New Event   
