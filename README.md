@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/Innocent-Fear/Cmpe131Team11.svg?branch=master)](https://travis-ci.com/Innocent-Fear/Cmpe131Team11)
+## The Unit Tests can be seen in test_main.py.
+
 # Myscheduler
 <describe application>
 
