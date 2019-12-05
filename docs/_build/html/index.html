@@ -37,6 +37,40 @@
 </div>
 <div class="section" id="our-functions">
 <h1>Our Functions:<a class="headerlink" href="#our-functions" title="Permalink to this headline">¶</a></h1>
+<p>Login:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Takes</span> <span class="n">a</span> <span class="n">username</span> <span class="ow">and</span> <span class="n">password</span> <span class="n">so</span> <span class="n">that</span> <span class="n">the</span> <span class="n">user</span> <span class="n">can</span> <span class="n">log</span> <span class="ow">in</span> <span class="n">to</span> <span class="n">their</span> <span class="n">account</span><span class="o">.</span>
+<span class="n">Takes</span> <span class="s1">&#39;form.username.data&#39;</span> <span class="ow">and</span> <span class="s1">&#39;form.password.data&#39;</span>
+</pre></div>
+</div>
+<p>Logout:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Logs</span> <span class="n">the</span> <span class="n">user</span> <span class="n">out</span> <span class="n">of</span> <span class="n">their</span> <span class="n">account</span> <span class="ow">and</span> <span class="n">goes</span> <span class="n">back</span> <span class="n">to</span> <span class="n">the</span> <span class="n">home</span> <span class="n">page</span>
+</pre></div>
+</div>
+<p>Register:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Takes</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="ow">and</span> <span class="n">email</span> <span class="n">to</span> <span class="n">register</span> <span class="n">the</span> <span class="n">user</span> <span class="n">into</span> <span class="n">the</span> <span class="n">database</span> <span class="n">of</span> <span class="n">existing</span> <span class="n">users</span>
+<span class="n">Takes</span> <span class="s1">&#39;form.username.data&#39;</span><span class="p">,</span> <span class="s1">&#39;form.password.data&#39;</span><span class="p">,</span> <span class="ow">and</span> <span class="s1">&#39;form.email.data&#39;</span>
+</pre></div>
+</div>
+<p>Create:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Creates</span> <span class="n">an</span> <span class="n">event</span> <span class="n">containing</span> <span class="n">a</span> <span class="n">name</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">start</span> <span class="n">time</span><span class="p">,</span> <span class="ow">and</span> <span class="n">end</span> <span class="n">time</span> <span class="n">value</span>
+<span class="n">Takes</span> <span class="s1">&#39;form.event_name.data&#39;</span><span class="p">,</span> <span class="s1">&#39;form.event_date.data&#39;</span><span class="p">,</span> <span class="s1">&#39;form.event_timeStart.data&#39;</span><span class="p">,</span> <span class="ow">and</span> <span class="s1">&#39;form.event_timeEnd.data&#39;</span>
+</pre></div>
+</div>
+<p>Edit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Allows</span> <span class="n">you</span> <span class="n">to</span> <span class="n">change</span> <span class="nb">any</span> <span class="n">values</span> <span class="n">of</span> <span class="n">an</span> <span class="n">existing</span> <span class="n">event</span>
+<span class="n">Takes</span> <span class="s1">&#39;form.event_name.data&#39;</span><span class="p">,</span> <span class="s1">&#39;form.event_date.data&#39;</span><span class="p">,</span> <span class="s1">&#39;form.event_timeStart.data&#39;</span><span class="p">,</span> <span class="ow">and</span> <span class="s1">&#39;form.event_timeEnd.data&#39;</span>
+</pre></div>
+</div>
+<p>Delete:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Removes</span> <span class="n">an</span> <span class="n">event</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">database</span> <span class="n">using</span> <span class="n">its</span> <span class="nb">id</span>
+<span class="n">Takes</span> <span class="s1">&#39;Event.query.get_or_404(i)&#39;</span>
+</pre></div>
+</div>
+<p>Vacancy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Finds</span> <span class="n">vacancies</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">schedule</span> <span class="n">based</span> <span class="n">on</span> <span class="n">existing</span> <span class="n">events</span>
+<span class="n">Takes</span> <span class="s1">&#39;form.event_date.data&#39;</span><span class="p">,</span> <span class="s1">&#39;form.event_timeStart.data&#39;</span><span class="p">,</span> <span class="ow">and</span> <span class="s1">&#39;form.event_timeEnd.data&#39;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="tutorials">
 <h1>Tutorials:<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
