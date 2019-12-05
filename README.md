@@ -21,6 +21,12 @@ Once an event has been created, you can click the "Delete" button on the right s
 Once an event has been created, you can click the "Edit" button on the right side of the event, which is displayed on the userpage, to edit the properties of your event. The button will take you to an edit page where you can enter in an event name, event date, event start time, and event end time. The time should be entered on a 24 hr clock scale. Currently, all of the boxes have to be filled in order for the feature to allow you to push the "Finish" button at the bottom to commit the changes. However, this feature will successfully edit the properties of the event that the user wishes to edit.
 ## Find Vacancy
 After being logged in and adding your desired events, press the "Find Vancancy" button on the userpage, and it show show you the vacancies in your schedule. The Find Vacancy feature has been implemented and successfully finds the vancancies in your schedule.
+## Search User (Search)
+After being logged in, click the "Search" to be redirected to the search page. In that page you can input a user's username. If they exist, then you will be redirected to a page to see all of their events. 
+## Number of events in a day
+In the userpage, under every table of days, the number of events in that day is counted and displayed.
+## Notify if event is today
+In the userpage, if a user has an event on the current day, they will be notified about that event.
 ## CSS
 We have finished implementing CSS to our project. The changes can be seen when the code is ran. We combined our CSS and html files together, so there are no separate CSS files.
 ## Sphinx Documentation
