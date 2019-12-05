@@ -71,4 +71,10 @@ def test_setting_password(new_user):
     new_user.set_password('TESTTEST')
     assert new_user.check_password != 'TESTTEST'
     assert new_user.check_password('TESTTEST')
-    assert not new_user.check_password('TestUser')    
+    assert not new_user.check_password('TestUser')
+
+# Test 8: Testing Home Page
+
+def test_home_page(test_client):
+    response = test_client.get('/')
+    assert response.status_code == 200
