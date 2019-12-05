@@ -22,4 +22,4 @@ Once an event has been created, you can click the "Edit" button on the right sid
 ## Find Vacancy
 After being logged in and adding your desired events, press the "Find Vancancy" button on the userpage, and it show show you the vacancies in your schedule. The Find Vacancy feature has been implemented and successfully finds the vancancies in your schedule.
 ## CSS
-We have finished implementing CSS to our project. The changes can be seen when the code is ran.
+We have finished implementing CSS to our project. The changes can be seen when the code is ran. We combined our CSS and html files together, so there are no separate CSS files.
